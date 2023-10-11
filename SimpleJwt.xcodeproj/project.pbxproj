@@ -11,6 +11,7 @@
 		FD838FE22AD6A023007AFC5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FE12AD6A023007AFC5F /* ContentView.swift */; };
 		FD838FE42AD6A025007AFC5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD838FE32AD6A025007AFC5F /* Assets.xcassets */; };
 		FD838FE72AD6A025007AFC5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */; };
+		FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		FD838FE12AD6A023007AFC5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD838FE32AD6A025007AFC5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		FD838FDE2AD6A023007AFC5F /* SimpleJwt */ = {
 			isa = PBXGroup;
 			children = (
+				FD838FED2AD6A1AF007AFC5F /* Utils */,
 				FD838FDF2AD6A023007AFC5F /* SimpleJwtApp.swift */,
 				FD838FE12AD6A023007AFC5F /* ContentView.swift */,
 				FD838FE32AD6A025007AFC5F /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FD838FED2AD6A1AF007AFC5F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD838FE22AD6A023007AFC5F /* ContentView.swift in Sources */,
+				FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */,
 				FD838FE02AD6A023007AFC5F /* SimpleJwtApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,7 +291,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.magomedcoder.SimpleJwt;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.magomedcoder.simple-jwt";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -307,7 +319,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.magomedcoder.SimpleJwt;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.magomedcoder.simple-jwt";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
