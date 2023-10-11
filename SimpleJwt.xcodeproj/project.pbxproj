@@ -7,20 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40B96796276056CC525C8BAB /* Pods_SimpleJwt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E66E1850F157B804A9D13B4 /* Pods_SimpleJwt.framework */; };
 		FD838FE02AD6A023007AFC5F /* SimpleJwtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FDF2AD6A023007AFC5F /* SimpleJwtApp.swift */; };
 		FD838FE22AD6A023007AFC5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FE12AD6A023007AFC5F /* ContentView.swift */; };
 		FD838FE42AD6A025007AFC5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD838FE32AD6A025007AFC5F /* Assets.xcassets */; };
 		FD838FE72AD6A025007AFC5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */; };
 		FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */; };
+		FDC7B7552AD6C16F0092F443 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC7B7542AD6C16F0092F443 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E66E1850F157B804A9D13B4 /* Pods_SimpleJwt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleJwt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5905EE7295D5103C7FEF48E1 /* Pods-SimpleJwt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleJwt.debug.xcconfig"; path = "Target Support Files/Pods-SimpleJwt/Pods-SimpleJwt.debug.xcconfig"; sourceTree = "<group>"; };
+		946986DEF817FAA5BD036987 /* Pods-SimpleJwt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleJwt.release.xcconfig"; path = "Target Support Files/Pods-SimpleJwt/Pods-SimpleJwt.release.xcconfig"; sourceTree = "<group>"; };
 		FD838FDC2AD6A023007AFC5F /* SimpleJwt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleJwt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD838FDF2AD6A023007AFC5F /* SimpleJwtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleJwtApp.swift; sourceTree = "<group>"; };
 		FD838FE12AD6A023007AFC5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD838FE32AD6A025007AFC5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
+		FDC7B7542AD6C16F0092F443 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,17 +34,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B96796276056CC525C8BAB /* Pods_SimpleJwt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4298FE78527C20D6497D047D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5905EE7295D5103C7FEF48E1 /* Pods-SimpleJwt.debug.xcconfig */,
+				946986DEF817FAA5BD036987 /* Pods-SimpleJwt.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7B704313159E613B4AA813DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E66E1850F157B804A9D13B4 /* Pods_SimpleJwt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FD838FD32AD6A023007AFC5F = {
 			isa = PBXGroup;
 			children = (
 				FD838FDE2AD6A023007AFC5F /* SimpleJwt */,
 				FD838FDD2AD6A023007AFC5F /* Products */,
+				4298FE78527C20D6497D047D /* Pods */,
+				7B704313159E613B4AA813DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */,
+				FDC7B7542AD6C16F0092F443 /* NetworkManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -85,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD838FEA2AD6A025007AFC5F /* Build configuration list for PBXNativeTarget "SimpleJwt" */;
 			buildPhases = (
+				3CB5F154D1FF25100DA3B3EE /* [CP] Check Pods Manifest.lock */,
 				FD838FD82AD6A023007AFC5F /* Sources */,
 				FD838FD92AD6A023007AFC5F /* Frameworks */,
 				FD838FDA2AD6A023007AFC5F /* Resources */,
+				E012CFB89A17A4380D4B11E6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -143,11 +172,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3CB5F154D1FF25100DA3B3EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleJwt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E012CFB89A17A4380D4B11E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleJwt/Pods-SimpleJwt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleJwt/Pods-SimpleJwt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleJwt/Pods-SimpleJwt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FD838FD82AD6A023007AFC5F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC7B7552AD6C16F0092F443 /* NetworkManager.swift in Sources */,
 				FD838FE22AD6A023007AFC5F /* ContentView.swift in Sources */,
 				FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */,
 				FD838FE02AD6A023007AFC5F /* SimpleJwtApp.swift in Sources */,
@@ -273,6 +345,7 @@
 		};
 		FD838FEB2AD6A025007AFC5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5905EE7295D5103C7FEF48E1 /* Pods-SimpleJwt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +374,7 @@
 		};
 		FD838FEC2AD6A025007AFC5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 946986DEF817FAA5BD036987 /* Pods-SimpleJwt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

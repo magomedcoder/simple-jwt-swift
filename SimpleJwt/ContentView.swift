@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-func JWTTest(token: String){
+func JWTTest(token: String) -> Void {
     if let jwt = JWTDecode(token: token) {
         let header = jwt.header
         let payload = jwt.payload
@@ -25,13 +25,41 @@ func JWTTest(token: String){
     }
 }
 
+struct LoginResponse: Codable {
+    var access: String
+}
+
+func onLogin() -> Void {
+    let networkManager = NetworkManager.shared
+
+    let parameters: [String: Any] = [
+        "username": "",
+        "password": "",
+    ]
+
+    networkManager.post(path: "/api/login/", parameters: parameters) { result in
+        switch result {
+        case .success(let data):
+            do {
+                let res = try JSONDecoder().decode(LoginResponse.self, from: data)
+                JWTTest(token: res.access)
+            } catch {
+                print(error)
+            }
+        case .failure(let error):
+            print("Error: \(error)")
+        }
+    }
+}
+
 struct ContentView: View {
-    
     var body: some View {
         VStack {
-            let _: () = JWTTest(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3MTM0MDg4LCJpYXQiOjE2OTcwMTQwODgsImp0aSI6ImExMzc1MThhYWNmNDQ2MzRiNWFmZWY2N2I0ZWNjMjAwIiwidXNlcl9pZCI6M30.Y7vFwlWjoCbUWTfQAwRKfVhhjekQ3SS7DEebkwujkGc")
-            
-            Text("Test")
+            Button(action: {
+                onLogin()
+            }) {
+                Text("Test")
+            }
         }
     }
 }
