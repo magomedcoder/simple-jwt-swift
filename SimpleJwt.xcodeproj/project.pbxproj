@@ -14,6 +14,8 @@
 		FD838FE72AD6A025007AFC5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */; };
 		FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */; };
 		FDC7B7552AD6C16F0092F443 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC7B7542AD6C16F0092F443 /* NetworkManager.swift */; };
+		FDC7B7572AD6D4200092F443 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC7B7562AD6D4200092F443 /* Models.swift */; };
+		FDC7B7592AD6D48D0092F443 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC7B7582AD6D48D0092F443 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
 		FDC7B7542AD6C16F0092F443 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FDC7B7562AD6D4200092F443 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		FDC7B7582AD6D48D0092F443 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				FD838FE12AD6A023007AFC5F /* ContentView.swift */,
 				FD838FE32AD6A025007AFC5F /* Assets.xcassets */,
 				FD838FE52AD6A025007AFC5F /* Preview Content */,
+				FDC7B7562AD6D4200092F443 /* Models.swift */,
+				FDC7B7582AD6D48D0092F443 /* ViewModel.swift */,
 			);
 			path = SimpleJwt;
 			sourceTree = "<group>";
@@ -223,6 +229,8 @@
 				FD838FE22AD6A023007AFC5F /* ContentView.swift in Sources */,
 				FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */,
 				FD838FE02AD6A023007AFC5F /* SimpleJwtApp.swift in Sources */,
+				FDC7B7592AD6D48D0092F443 /* ViewModel.swift in Sources */,
+				FDC7B7572AD6D4200092F443 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

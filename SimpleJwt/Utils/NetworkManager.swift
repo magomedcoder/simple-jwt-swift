@@ -12,6 +12,7 @@ class NetworkManager {
 
     private let baseURL = ""
     private var session: Session
+    private var jwtToken: String?
 
     private init() {
         session = Session()
@@ -24,19 +25,94 @@ class NetworkManager {
         fatalError("Invalid URL")
     }
     
+    func setJWTToken(token: String) {
+        jwtToken = token
+    }
+    
+    private var jwtHeader: HTTPHeaders {
+        if let token = jwtToken {
+            return HTTPHeaders(["Authorization": "Bearer \(token)"])
+        } else {
+            return HTTPHeaders()
+        }
+    }
+    
+    private func isTokenValid() -> Bool {
+        guard let token = jwtToken,
+              let jwt = JWTDecode(token: token) else {
+            return false
+        }
+
+        let expirationDate = Date(timeIntervalSince1970: jwt.payload.expiresIn)
+        let currentDate = Date()
+
+        return currentDate < expirationDate
+    }
+    
     private func performRequest(url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: @escaping (Result<Data, Error>) -> Void) {
-        session.request(url, method: method, parameters: parameters)
-            .validate()
-            .responseData {[weak self] response in
-                switch response.result {
+        if !isTokenValid() {
+            refresh { [weak self] result in
+                switch result {
                 case .success(let data):
-                    completion(.success(data))
+
+                    self?.jwtToken = ""
+
+                    self?.performRequest(url: url, method: method, parameters: parameters, completion: completion)
                 case .failure(let error):
-                    print(error)
+                    completion(.failure(error))
                 }
             }
+        } else {
+            session.request(url, method: method, parameters: parameters, headers: jwtHeader)
+                .validate()
+                .responseData { [weak self] response in
+                    switch response.result {
+                    case .success(let data):
+                        completion(.success(data))
+                    case .failure(let error):
+                        if let statusCode = response.response?.statusCode, statusCode == 401 {
+                            self?.refresh { [weak self] result in
+                                switch result {
+                                case .success(let data):
+                                    
+                                    self?.jwtToken = ""
+                                    
+                                    self?.performRequest(url: url, method: method, parameters: parameters, completion: completion)
+                                case .failure(let error):
+                                    completion(.failure(error))
+                                }
+                            }
+                        } else {
+                            completion(.failure(error))
+                        }
+                    }
+                }
+        }
     }
-  
+
+    func refresh(completion: @escaping (Result<Data, Error>) -> Void) {
+        if let refreshURL = URL(string: baseURL + "/api/refresh/") {
+            let parameters: [String: Any] = ["refresh": ""]
+            performRequest(
+                url: refreshURL,
+                method: .post,
+                parameters: parameters,
+                completion: completion
+            )
+        } else {
+            fatalError("Неверный URL-адрес для обновления токена")
+        }
+    }
+    
+    func get(
+        path: String,
+        parameters: [String: Any]?,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        let url = fullURL(forPath: path)
+        performRequest(url: url, method: .get, parameters: parameters, completion: completion)
+    }
+    
     func post(
         path: String,
         parameters: [String: Any]?,
@@ -44,6 +120,24 @@ class NetworkManager {
     ) {
         let url = fullURL(forPath: path)
         performRequest(url: url, method: .post, parameters: parameters, completion: completion)
+    }
+    
+    func put(
+        path: String,
+        parameters: [String: Any]?,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        let url = fullURL(forPath: path)
+        performRequest(url: url, method: .put, parameters: parameters, completion: completion)
+    }
+    
+    func delete(
+        path: String,
+        parameters: [String: Any]?,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        let url = fullURL(forPath: path)
+        performRequest(url: url, method: .delete, parameters: parameters, completion: completion)
     }
     
 }
