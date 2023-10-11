@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SimpleJwtApp: App {
+    @State var vm = ViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            vm.isAuth() ? AnyView(UserView()) : AnyView(AuthView())
         }
     }
 }

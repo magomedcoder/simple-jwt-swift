@@ -9,6 +9,7 @@ import Foundation
 
 struct LoginModel: Codable {
     var access: String
+    var refresh: String
 }
 
 struct UserModel: Codable {

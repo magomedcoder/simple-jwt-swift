@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		40B96796276056CC525C8BAB /* Pods_SimpleJwt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E66E1850F157B804A9D13B4 /* Pods_SimpleJwt.framework */; };
+		FD7ECB492AD73ED900BBA758 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7ECB482AD73ED900BBA758 /* UserView.swift */; };
 		FD838FE02AD6A023007AFC5F /* SimpleJwtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FDF2AD6A023007AFC5F /* SimpleJwtApp.swift */; };
-		FD838FE22AD6A023007AFC5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FE12AD6A023007AFC5F /* ContentView.swift */; };
+		FD838FE22AD6A023007AFC5F /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FE12AD6A023007AFC5F /* AuthView.swift */; };
 		FD838FE42AD6A025007AFC5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD838FE32AD6A025007AFC5F /* Assets.xcassets */; };
 		FD838FE72AD6A025007AFC5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */; };
 		FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */; };
@@ -22,9 +23,10 @@
 		0E66E1850F157B804A9D13B4 /* Pods_SimpleJwt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleJwt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5905EE7295D5103C7FEF48E1 /* Pods-SimpleJwt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleJwt.debug.xcconfig"; path = "Target Support Files/Pods-SimpleJwt/Pods-SimpleJwt.debug.xcconfig"; sourceTree = "<group>"; };
 		946986DEF817FAA5BD036987 /* Pods-SimpleJwt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleJwt.release.xcconfig"; path = "Target Support Files/Pods-SimpleJwt/Pods-SimpleJwt.release.xcconfig"; sourceTree = "<group>"; };
+		FD7ECB482AD73ED900BBA758 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		FD838FDC2AD6A023007AFC5F /* SimpleJwt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleJwt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD838FDF2AD6A023007AFC5F /* SimpleJwtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleJwtApp.swift; sourceTree = "<group>"; };
-		FD838FE12AD6A023007AFC5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FD838FE12AD6A023007AFC5F /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		FD838FE32AD6A025007AFC5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD838FE62AD6A025007AFC5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD838FEE2AD6A273007AFC5F /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
@@ -62,6 +64,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD7ECB452AD7373E00BBA758 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FD838FE32AD6A025007AFC5F /* Assets.xcassets */,
+				FD838FE52AD6A025007AFC5F /* Preview Content */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		FD838FD32AD6A023007AFC5F = {
 			isa = PBXGroup;
 			children = (
@@ -83,13 +94,13 @@
 		FD838FDE2AD6A023007AFC5F /* SimpleJwt */ = {
 			isa = PBXGroup;
 			children = (
+				FD7ECB452AD7373E00BBA758 /* Assets */,
 				FD838FED2AD6A1AF007AFC5F /* Utils */,
-				FD838FDF2AD6A023007AFC5F /* SimpleJwtApp.swift */,
-				FD838FE12AD6A023007AFC5F /* ContentView.swift */,
-				FD838FE32AD6A025007AFC5F /* Assets.xcassets */,
-				FD838FE52AD6A025007AFC5F /* Preview Content */,
+				FD838FE12AD6A023007AFC5F /* AuthView.swift */,
+				FD7ECB482AD73ED900BBA758 /* UserView.swift */,
 				FDC7B7562AD6D4200092F443 /* Models.swift */,
 				FDC7B7582AD6D48D0092F443 /* ViewModel.swift */,
+				FD838FDF2AD6A023007AFC5F /* SimpleJwtApp.swift */,
 			);
 			path = SimpleJwt;
 			sourceTree = "<group>";
@@ -226,11 +237,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDC7B7552AD6C16F0092F443 /* NetworkManager.swift in Sources */,
-				FD838FE22AD6A023007AFC5F /* ContentView.swift in Sources */,
+				FD838FE22AD6A023007AFC5F /* AuthView.swift in Sources */,
 				FD838FEF2AD6A273007AFC5F /* JWTDecode.swift in Sources */,
 				FD838FE02AD6A023007AFC5F /* SimpleJwtApp.swift in Sources */,
 				FDC7B7592AD6D48D0092F443 /* ViewModel.swift in Sources */,
 				FDC7B7572AD6D4200092F443 /* Models.swift in Sources */,
+				FD7ECB492AD73ED900BBA758 /* UserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +371,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SimpleJwt/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleJwt/Assets/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -388,7 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SimpleJwt/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleJwt/Assets/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

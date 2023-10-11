@@ -25,8 +25,8 @@ class NetworkManager {
         fatalError("Invalid URL")
     }
     
-    func setJWTToken(token: String) {
-        jwtToken = token
+    func setJWTToken() {
+        jwtToken = UserDefaults.standard.string(forKey: "access_token")
     }
     
     private var jwtHeader: HTTPHeaders {
@@ -54,9 +54,13 @@ class NetworkManager {
             refresh { [weak self] result in
                 switch result {
                 case .success(let data):
-
-                    self?.jwtToken = ""
-
+                    do {
+                        let res = try JSONDecoder().decode(LoginModel.self, from: data)
+                        UserDefaults.standard.set("access_token", forKey: res.access)
+                        self?.jwtToken = res.access
+                    } catch {
+                        print(error)
+                    }
                     self?.performRequest(url: url, method: method, parameters: parameters, completion: completion)
                 case .failure(let error):
                     completion(.failure(error))
@@ -74,9 +78,13 @@ class NetworkManager {
                             self?.refresh { [weak self] result in
                                 switch result {
                                 case .success(let data):
-                                    
-                                    self?.jwtToken = ""
-                                    
+                                    do {
+                                        let res = try JSONDecoder().decode(LoginModel.self, from: data)
+                                        UserDefaults.standard.set("access_token", forKey: res.access)
+                                        self?.jwtToken = res.access
+                                    } catch {
+                                        print(error)
+                                    }
                                     self?.performRequest(url: url, method: method, parameters: parameters, completion: completion)
                                 case .failure(let error):
                                     completion(.failure(error))
@@ -92,13 +100,15 @@ class NetworkManager {
 
     func refresh(completion: @escaping (Result<Data, Error>) -> Void) {
         if let refreshURL = URL(string: baseURL + "/api/refresh/") {
-            let parameters: [String: Any] = ["refresh": ""]
-            performRequest(
-                url: refreshURL,
-                method: .post,
-                parameters: parameters,
-                completion: completion
-            )
+            if let refresh = UserDefaults.standard.string(forKey: "refresh_token") {
+                let parameters: [String: Any] = ["refresh": refresh]
+                performRequest(
+                    url: refreshURL,
+                    method: .post,
+                    parameters: parameters,
+                    completion: completion
+                )
+            }
         } else {
             fatalError("Неверный URL-адрес для обновления токена")
         }
